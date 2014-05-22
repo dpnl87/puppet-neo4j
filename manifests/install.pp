@@ -6,14 +6,21 @@ class neo4j::install {
   if $neo4j::install_from_file {
 
     file { "/tmp/${neo4j::package_name}":
-      source => "puppet:///modules/neo4j/files/${neo4j::package_name}",
+      source => "puppet:///modules/neo4j/${neo4j::package_name}",
+    }
+
+    package { 'java-1.7.0-openjdk':
+      ensure => present,
     }
 
     package { $neo4j::package_name:
       ensure   => present,
       provider => 'rpm',
       source   => "/tmp/${neo4j::package_name}",
-      require  => File["/tmp/${neo4j::package_name}"],
+      require  => [
+        File["/tmp/${neo4j::package_name}"],
+        Package['java-1.7.0-openjdk'],
+      ],
     }
   }
 
