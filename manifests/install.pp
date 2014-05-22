@@ -5,8 +5,8 @@ class neo4j::install {
   # If 'install_from_file' set to true use rpm file to install
   if $neo4j::install_from_file {
 
-    file { "/tmp/${neo4j::package_name}":
-      source => "puppet:///modules/neo4j/${neo4j::package_name}",
+    file { "/tmp/${neo4j::package_name}.rpm":
+      source => "puppet:///modules/neo4j/${neo4j::package_name}.rpm",
     }
 
     package { 'java-1.7.0-openjdk':
@@ -16,9 +16,9 @@ class neo4j::install {
     package { $neo4j::package_name:
       ensure   => present,
       provider => 'rpm',
-      source   => "/tmp/${neo4j::package_name}",
+      source   => "/tmp/${neo4j::package_name}.rpm",
       require  => [
-        File["/tmp/${neo4j::package_name}"],
+        File["/tmp/${neo4j::package_name}.rpm"],
         Package['java-1.7.0-openjdk'],
       ],
     }
