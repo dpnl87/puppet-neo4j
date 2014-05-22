@@ -17,4 +17,6 @@ class neo4j::params {
       fail("${::operatingsystem} not supported")
     }
   }
+
+  $server_address = '0.0.0.0'
 }

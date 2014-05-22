@@ -10,8 +10,9 @@
 class neo4j (
   $install_from_file = undef,
   $install_from_repo = undef,
-  $package_name = $neo4j::params::package_name,
-  $service_name = $neo4j::params::service_name,
+  $package_name      = $neo4j::params::package_name,
+  $service_name      = $neo4j::params::service_name,
+  $server_address    = $neo4j::params::server_address,
 ) inherits neo4j::params {
 
   if !$install_from_repo and !$install_from_file {
