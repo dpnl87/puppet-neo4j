@@ -5,11 +5,7 @@
 #
 class neo4j::params {
   case $::osfamily {
-    'Debian': {
-      $package_name = 'neo4j'
-      $service_name = 'neo4j'
-    }
-    'RedHat', 'Amazon': {
+    'RedHat': {
       $package_name = 'neo4j'
       $service_name = 'neo4j'
     }
@@ -18,5 +14,6 @@ class neo4j::params {
     }
   }
 
-  $server_address = '0.0.0.0'
+  $server_address      = '0.0.0.0'
+  $installation_source = 'file'
 }
