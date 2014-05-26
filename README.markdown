@@ -1,3 +1,6 @@
+[![Build
+Status](https://travis-ci.org/dpnl87/puppet-neo4j.svg?branch=master)](https://travis-ci.org/dpnl87/puppet-neo4j)
+
 ####Table of Contents
 
 1. [Overview](#overview)
